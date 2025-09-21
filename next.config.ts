@@ -2,24 +2,17 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "ac.goit.global" },
-      { protocol: "http", hostname: "localhost" }, // для локальной разработки
-      { protocol: "https", hostname: "your-domain.com" }, // замените на ваш домен
-    ],
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    remotePatterns: [{ protocol: "https", hostname: "ac.goit.global" }],
   },
   async headers() {
     return [
       {
-        source: "/notes/filter/All",
+        source: "/notes/filter/All", // маршрут сторінки
         locale: false,
         headers: [
           {
-            key: "Cache-Control",
-            value: "public, max-age=300, must-revalidate",
+            key: "Cache-Control", // Заголовок
+            value: "public, max-age=300, must-revalidate", // кешуємо на 5 хв
           },
         ],
       },

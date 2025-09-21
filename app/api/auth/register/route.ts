@@ -11,11 +11,6 @@ export async function POST(req: NextRequest) {
 
     const apiRes = await api.post("auth/register", body);
 
-    const userData = {
-      ...apiRes.data,
-      avatar: apiRes.data.avatar || "https://via.placeholder.com/150"
-    };
-
     const cookieStore = await cookies();
     const setCookie = apiRes.headers["set-cookie"];
 
@@ -34,7 +29,7 @@ export async function POST(req: NextRequest) {
         if (parsed.refreshToken)
           cookieStore.set("refreshToken", parsed.refreshToken, options);
       }
-      return NextResponse.json(userData, { status: apiRes.status });
+      return NextResponse.json(apiRes.data, { status: apiRes.status });
     }
 
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -43,7 +38,7 @@ export async function POST(req: NextRequest) {
       logErrorResponse(error.response?.data);
       return NextResponse.json(
         { error: error.message, response: error.response?.data },
-        { status: error.response?.status || 500 }
+        { status: error.status }
       );
     }
     logErrorResponse({ message: (error as Error).message });

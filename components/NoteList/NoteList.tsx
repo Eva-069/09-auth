@@ -1,5 +1,5 @@
 "use client";
-import { deleteNote } from "@/lib/api";
+import { deleteNote } from "@/lib/api/ClientApi";
 import type { Note } from "@/types/note";
 import css from "./NoteList.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -30,7 +30,7 @@ export default function NoteList({ notes }: NoteListProps) {
             <p className={css.content}>{note.content}</p>
             <div className={css.footer}>
               <span className={css.tag}>{note.tag}</span>
-              <Link scroll={false} className={css.link} href={`/notes/${note.id}`}>
+              <Link className={css.link} href={`/notes/${note.id}`}>
                 View details
               </Link>
               <button className={css.button} onClick={() => mutate(note.id)}>
@@ -38,7 +38,7 @@ export default function NoteList({ notes }: NoteListProps) {
               </button>
             </div>
           </li>
-        )) 
+        )) /* Набір елементів списку нотатків */
       }
     </ul>
   );

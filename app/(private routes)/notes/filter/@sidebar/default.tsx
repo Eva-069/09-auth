@@ -1,5 +1,5 @@
 import Link from "next/link";
-import css from "@/app/notes/filter/@sidebar/SideBar.module.css";
+import css from "@/app/(private routes)/notes/filter/@sidebar/SideBar.module.css";
 import type { TagList } from "@/types/note";
 
 export default async function SidebarNotes() {

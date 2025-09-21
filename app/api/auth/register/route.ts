@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
     const userData = {
       ...apiRes.data,
-      avatar: apiRes.data.avatar || "/my-avatar.png.png"
+      avatar: apiRes.data.avatar || "https://via.placeholder.com/150"
     };
 
     const cookieStore = await cookies();

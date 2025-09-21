@@ -15,7 +15,7 @@ export default function TagsMenu({ tags }: Props) {
       </button>
       {isOpen && (
         <ul className={css.menuList}>
-          {}
+          {/* список тегів */}
           <li className={css.menuItem}>
             <Link
               href={`/notes/filter/All`}
@@ -25,7 +25,7 @@ export default function TagsMenu({ tags }: Props) {
               All tags
             </Link>
           </li>
-          {}
+          {/* Теги з бекенду */}
           {tags.map((tag) => (
             <li key={tag} className={css.menuItem}>
               <Link

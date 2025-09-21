@@ -3,6 +3,7 @@ import css from "@/app/(private routes)/notes/filter/@sidebar/SideBar.module.css
 import type { TagList } from "@/types/note";
 
 export default async function SidebarNotes() {
+  // await new Promise((r) => setTimeout(r, 3000));
   const tags: TagList[] = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
   return (
     <ul className={css.menuList}>
